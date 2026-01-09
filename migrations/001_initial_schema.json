@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "directus": "11.10.2",
+  "collections": [
+    {
+      "collection": "tags",
+      "meta": {
+        "accountability": "all",
+        "collection": "tags",
+        "icon": "label",
+        "note": "Tags pour catégoriser les memes"
+      },
+      "schema": {
+        "name": "tags"
+      }
+    },
+    {
+      "collection": "memes",
+      "meta": {
+        "accountability": "all",
+        "collection": "memes",
+        "icon": "image",
+        "note": "Collection des memes"
+      },
+      "schema": {
+        "name": "memes"
+      }
+    },
+    {
+      "collection": "memes_tags",
+      "meta": {
+        "accountability": "all",
+        "collection": "memes_tags",
+        "hidden": true,
+        "icon": "import_export"
+      },
+      "schema": {
+        "name": "memes_tags"
+      }
+    },
+    {
+      "collection": "memes_likes",
+      "meta": {
+        "accountability": "all",
+        "collection": "memes_likes",
+        "icon": "favorite",
+        "note": "Système de likes"
+      },
+      "schema": {
+        "name": "memes_likes"
+      }
+    },
+    {
+      "collection": "notifications",
+      "meta": {
+        "accountability": "all",
+        "collection": "notifications",
+        "icon": "notifications",
+        "note": "Notifications temps réel"
+      },
+      "schema": {
+        "name": "notifications"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "collection": "tags",
+      "field": "id",
+      "type": "uuid",
+      "meta": {
+        "interface": "input",
+        "hidden": true,
+        "readonly": true
+      },
+      "schema": {
+        "is_primary_key": true,
+        "has_auto_increment": false
+      }
+    },
+    {
+      "collection": "tags",
+      "field": "name",
+      "type": "string",
+      "meta": {
+        "interface": "input",
+        "required": true,
+        "options": {
+          "placeholder": "Nom du tag"
+        }
+      },
+      "schema": {
+        "is_unique": true,
+        "max_length": 50
+      }
+    },
+    {
+      "collection": "memes",
+      "field": "id",
+      "type": "uuid",
+      "meta": {
+        "interface": "input",
+        "hidden": true,
+        "readonly": true
+      },
+      "schema": {
+        "is_primary_key": true
+      }
+    },
+    {
+      "collection": "memes",
+      "field": "title",
+      "type": "string",
+      "meta": {
+        "interface": "input",
+        "required": true
+      },
+      "schema": {
+        "max_length": 255
+      }
+    },
+    {
+      "collection": "memes",
+      "field": "image",
+      "type": "uuid",
+      "meta": {
+        "interface": "file-image",
+        "required": true
+      }
+    },
+    {
+      "collection": "memes",
+      "field": "views",
+      "type": "integer",
+      "meta": {
+        "interface": "input",
+        "readonly": true
+      },
+      "schema": {
+        "default_value": 0
+      }
+    },
+    {
+      "collection": "memes",
+      "field": "likes",
+      "type": "integer",
+      "meta": {
+        "interface": "input",
+        "readonly": true
+      },
+      "schema": {
+        "default_value": 0
+      }
+    },
+    {
+      "collection": "memes",
+      "field": "status",
+      "type": "string",
+      "meta": {
+        "interface": "select-dropdown",
+        "options": {
+          "choices": [
+            { "text": "Publié", "value": "published" },
+            { "text": "Brouillon", "value": "draft" },
+            { "text": "Archivé", "value": "archived" }
+          ]
+        }
+      },
+      "schema": {
+        "default_value": "published"
+      }
+    }
+  ],
+  "relations": []
+}

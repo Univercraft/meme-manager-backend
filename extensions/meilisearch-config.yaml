@@ -1,0 +1,22 @@
+collections:
+  memes:
+    index_name: memes
+    fields:
+      - id
+      - title
+      - status
+      - views
+      - likes
+      - date_created
+    filter:
+      status:
+        _eq: published
+    searchable_fields:
+      - title
+    filterable_fields:
+      - status
+      - date_created
+    sortable_fields:
+      - date_created
+      - views
+      - likes

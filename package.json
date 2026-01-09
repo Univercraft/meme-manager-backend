@@ -1,0 +1,30 @@
+{
+  "name": "meme-manager-backend",
+  "version": "1.0.0",
+  "description": "Backend Directus pour Meme Manager",
+  "type": "module",
+  "scripts": {
+    "start": "directus start",
+    "meilisearch": ".\\meilisearch-bin\\meilisearch.exe --master-key=dev-meilisearch-key-123 --db-path=./data/meilisearch --http-addr=127.0.0.1:7701",
+    "dev": "concurrently \"npm run meilisearch\" \"npm run start\"",
+    "test:connection": "node test-connection.js",
+    "setup:public": "node setup-permissions.js",
+    "setup:auth": "node setup-authenticated-permissions.js",
+    "setup:all": "node setup-permissions.js && node setup-authenticated-permissions.js",
+    "create:saved-memes": "node create-saved-memes-collection.js",
+    "create:notifications": "node create-notifications-collection.js",
+    "create:collections": "node create-saved-memes-collection.js && node create-notifications-collection.js",
+    "fix:permissions": "node fix-permissions.js",
+    "setup:meilisearch": "node setup-meilisearch.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "chalk": "^5.6.2",
+    "directus": "^11.13.2",
+    "dotenv": "^17.2.3",
+    "meilisearch": "^0.41.0"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "^12.0.0"
+  }
+}
